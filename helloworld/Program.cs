@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Threading;
 
 namespace helloworld
 {
@@ -10,6 +11,16 @@ namespace helloworld
     {
         static void Main(string[] args)
         {
+            Console.WriteLine("Download the file");
+            Download();
+            Console.ReadLine();
+
+        }
+        static void Download()
+        {
+            Thread.Sleep(3000);
+            Console.WriteLine("Download Complete");
         }
     }
+
 }
