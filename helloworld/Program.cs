@@ -18,8 +18,11 @@ namespace helloworld
         }
         static void Download()
         {
-            Thread.Sleep(3000);
-            Console.WriteLine("Download Complete");
+            Task.Run(() =>
+            {
+                Thread.Sleep(3000);
+                Console.WriteLine("Download Complete");
+            });
         }
     }
 
