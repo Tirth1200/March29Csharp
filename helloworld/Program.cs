@@ -18,12 +18,29 @@ namespace helloworld
         }
         static void Download()
         {
-            Task.Run(() =>
+
+            Thread.Sleep(3000);
+            Console.WriteLine("Download Complete");
+
+        }
+        static async void Download()
+        {
+            await Network.Download();
+            Console.WriteLine("Download Complete");
+        }
+        class Network
+        {
+            static ArrayList WebPageContents = new ArrayList();
+            public static async Task Download()
             {
-                Thread.Sleep(3000);
-                Console.WriteLine("Download Complete");
-            });
+                HttpClient client = new HttpClient();
+                var data = await client.GetStringAsync("http://torontopubliclibrary.com");
+                // Console.WriteLine(data);
+                foreach (var i in data)
+                {
+                    WebPageContents.Add(i);
+                }
+            }
         }
     }
-
 }
